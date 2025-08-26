@@ -1,5 +1,28 @@
 'use strict';
 
+/****** SCREEN CHANGE LOGIC *****/
+
+const startScreen = document.querySelector("#start-screen");
+const gameScreen = document.querySelector("#game-screen");
+const winScreen = document.querySelector("#win-screen");
+const loseScreen = document.querySelector("#lose-screen");
+
+function changeScreen(prevScreen, newScreen) {
+    prevScreen.style.display = "none";
+    newScreen.style.display = "block";
+}
+
+/***** START SCREEN *****/
+
+const startBtn = document.querySelector("#startBtn");
+
+startBtn.addEventListener('click', () => {
+    changeScreen(startScreen, gameScreen);
+})
+
+
+/***** GAME LOGIC *****/
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -80,3 +103,4 @@ choices.addEventListener('click', (event) => {
         gameResults.textContent = humanScore > computerScore ? 'You won the game!' : 'You lose! Better luck next time.';
     }
 });
+
