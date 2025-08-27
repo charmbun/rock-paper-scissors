@@ -8,8 +8,13 @@ const winScreen = document.querySelector("#win-screen");
 const loseScreen = document.querySelector("#lose-screen");
 
 function changeScreen(prevScreen, newScreen) {
-    prevScreen.style.display = "none";
-    newScreen.style.display = "flex";
+
+    // prevScreen.classList.add("pixelate");
+
+    // prevScreen.addEventListener("animationend", () => {
+        prevScreen.style.display = "none";
+        newScreen.style.display = "flex";
+    //   })
 }
 
 /***** START SCREEN *****/
