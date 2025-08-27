@@ -8,13 +8,8 @@ const winScreen = document.querySelector("#win-screen");
 const loseScreen = document.querySelector("#lose-screen");
 
 function changeScreen(prevScreen, newScreen) {
-
-    // prevScreen.classList.add("pixelate");
-
-    // prevScreen.addEventListener("animationend", () => {
-        prevScreen.style.display = "none";
-        newScreen.style.display = "flex";
-    //   })
+    prevScreen.style.display = "none";
+    newScreen.style.display = "flex";
 }
 
 /***** START SCREEN *****/
@@ -25,6 +20,9 @@ startBtn.addEventListener('click', () => {
     changeScreen(startScreen, gameScreen);
 })
 
+
+let dialogue = document.querySelector(".dialogue-box");
+dialogue.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
 
 /***** GAME LOGIC *****/
 
