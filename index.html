@@ -11,28 +11,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Micro+5&family=Tiny5&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css"> 
 </head>
-<body>
+<body class="grid-bg">
     <div id="container">
 
         <div class="frame">
             <div class="frame-outside">
-            <div class="frame-inside">
+            <div class="frame-inside ">
                 <!-- Start Screen -->
                 <section id="start-screen">
-                    <h1><span id="rock">ROCK</span> <span id="paper">PAPER</span> <span id="scissors">SCISSORS</span></h1>
+                    <h1 class="text-outline"><span id="rock">ROCK</span> <span id="paper">PAPER</span> <span id="scissors">SCISSORS</span></h1>
                     <button id="startBtn">NEW GAME</button>
                 </section>
                 <!-- Game Screen -->
-                <section id="game-screen" style="display:none;">
-                    <div class="choices">
-                        <button id="rockBtn" type="button">Rock</button>
-                        <button id="paperBtn" type="button">Paper</button>
-                        <button id="scissorsBtn" type="button">Scissors</button>
+                <div id="game-screen" style="display:none;">
+                    <div class="players-area"></div>
+                    <div class="boxes">
+                        <div class="dialogue-box">Dialogue</div>
+                        <div class="choice-box">
+                            <button id="rockBtn" type="button">Rock</button>
+                            <button id="paperBtn" type="button">Paper</button>
+                            <button id="scissorsBtn" type="button">Scissors</button>
+                        </div>
                     </div>
-                    <div class="results">
-                    </div>
-                </section>
-                
+                </div>
+
             </div>
             </div>
         </div>

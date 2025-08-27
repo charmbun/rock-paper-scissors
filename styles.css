@@ -1,7 +1,11 @@
 /***** GLOBAL *****/
 
 body {
-    background-color: #FFFAFC;
+    background-color: #fefefe; /* base background */
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px; 
 }
 
 #rock {
@@ -16,6 +20,17 @@ body {
     color: #8BA1D9;
 }
 
+/***** REUSABLE CLASSES *****/
+
+.text-outline {
+    color: #fff;
+    text-shadow:
+        -2px -2px 0 #000,  
+        2px -2px 0 #000,
+        -2px  2px 0 #000,
+        2px  2px 0 #000;
+}
+
 /***** BACKGROUND *****/
 
 #container {
@@ -28,18 +43,17 @@ body {
 }
 
 .frame-inside {
-    background-color: #FFFFFF;
-    border: 10px solid #D497A9;
+    border: 3px solid #D497A9;
+    outline: 2px solid #666;
     width: 800px;
     height: 400px;
-    border-radius: 20px;
+    padding: 20px;
 }
 
 .frame-outside {
-    background-color: #E2C1D4;
-    border: 12px solid #B06F78;
-    border-radius: 45px;
-    padding: 12px;
+    border: 3px solid #000;
+    outline: 2px solid #666;
+    padding: 10px;
 }
 
 /***** START SCREEN *****/
@@ -57,20 +71,50 @@ body {
     font-weight: 200;
     text-align: center;
     line-height: 0.6;
-    margin: 30px 0;
+    margin: 32px 0;
 }
 
 #startBtn {
     font-family: 'Tiny5', sans-serif;
-    font-size: 40px;
-    background-color: #f4d7e2;
-    color: #4E5C7E;
-    border: 5px solid #D497A9;
-    border-radius: 25px;
-    padding: 5px 20px;
-}
-
-#startBtn:hover {
+    font-size: 32px;
+    background: #eeeeee;
+    border: 2px solid #000;
+    padding: 6px 12px;
     cursor: pointer;
+    box-shadow:
+    2px 2px 0 #555; /* pixel drop shadow */
 }
 
+#startBtn:active {
+    background-color: #d9d9d9;
+    box-shadow: none;
+    transform: translate(2px, 2px); /* pressed look */
+}
+
+/***** GAME SCREEN *****/
+
+#game-screen {
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.players-area {
+    height: 200px;
+    border: 8px solid #D497A9;
+}
+
+.boxes {
+    display: flex;
+}
+
+.dialogue-box {
+    width: 600px;
+    height: 100px;
+    border: 8px solid #D497A9;
+}
+
+.choice-box {
+    height: 100px;
+    border: 8px solid #D497A9;
+}

@@ -9,7 +9,7 @@ const loseScreen = document.querySelector("#lose-screen");
 
 function changeScreen(prevScreen, newScreen) {
     prevScreen.style.display = "none";
-    newScreen.style.display = "block";
+    newScreen.style.display = "flex";
 }
 
 /***** START SCREEN *****/
