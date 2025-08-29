@@ -126,6 +126,7 @@ body {
 .name {
     font-size: 24px;
     color: #90B790;
+    margin-bottom: 5px;
 }
 
 .status.computer {
@@ -135,17 +136,22 @@ body {
     margin-bottom: 60px;
 }
 
+.status.player {
+    display: flex;
+    flex-direction: column;
+}
+
 .hp-bar {
     width: 250px;
     height: 20px;
-    border: 3px solid #90B790;
+    border: 3px solid #90B78F;
     border-radius: 5px;
 }
 
 .hp-fill {
     width: 250px;
     height: 20px;    
-    background-color: #BDE4CF;
+    background-color: #BAE0BB;
 }
 
 /* SPRITE */
@@ -192,6 +198,7 @@ body {
     gap: 16px;
     justify-content: space-between;
     z-index: 3;
+    margin-top: 10px;
 }
 
 .dialogue-box {
@@ -203,7 +210,7 @@ body {
     font-size: 20px;
     font-family: 'Tiny5', sans-serif;
     color: #1f1f1f;
-    background-color: #F8F8F8;
+    background-color: #F3F3F3;
 }
 
 /* CHOICES AREA */
@@ -223,7 +230,7 @@ body {
     border: 2px solid #000;
     padding: 6px 12px;
     cursor: pointer;
-    box-shadow: 2px 2px 0 #555; /
+    box-shadow: 2px 2px 0 #555; 
 }
 
 #rockBtn {
