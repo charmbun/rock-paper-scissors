@@ -20,9 +20,8 @@ startBtn.addEventListener('click', () => {
     changeScreen(startScreen, gameScreen);
 })
 
-
-let dialogue = document.querySelector(".dialogue-box");
-dialogue.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
+let dialogueBox = document.querySelector(".dialogue-box");
+dialogueBox.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
 
 /***** GAME LOGIC *****/
 

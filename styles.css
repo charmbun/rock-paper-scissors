@@ -1,11 +1,8 @@
 /***** GLOBAL *****/
 
 body {
-    background-color: #fefefe; /* base background */
-    background-image: 
-        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 10px 10px; 
+    font-family: 'Tiny5', sans-serif;
+    background-color: #FFFAFC;
 }
 
 #rock {
@@ -20,7 +17,7 @@ body {
     color: #8BA1D9;
 }
 
-/***** REUSABLE CLASSES *****/
+/***** UTILITIES *****/
 
 .text-outline {
     color: #fff;
@@ -42,21 +39,37 @@ body {
     cursor:cell;
 }
 
+.left-graphics {
+    position: relative;
+    left: -10vh;
+    image-rendering: pixelated; 
+}
+
+.right-graphics {
+    position: relative;
+    right: -10vh;
+    image-rendering: pixelated; 
+}
+
 .frame-inside {
+    background-color: #fefefe; /* base background */
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px; 
     border: 3px solid #D497A9;
-    outline: 2px solid #666;
+    outline: 2px solid #D497A9;
     width: 800px;
     height: 400px;
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .frame-outside {
-    /* background-color: #fefefe;
-    background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
-    background-size: 6px 6px; */
+    background-color: #E2C1D4;
     border: 3px solid #000;
     outline: 2px solid #666;
     padding: 10px;
+    box-shadow: 5px 5px 0 #555; 
 }
 
 /***** START SCREEN *****/
@@ -98,43 +111,138 @@ body {
 #game-screen {
     display: flex;
     flex-direction: column;
-    gap: 16px
 }
 
-.players-area {
-    width: auto;
+/* BATTLE AREA */
+
+.battle-area {
+    width: 800px;
     height: 280px;
-    border: 2px solid #000;
+    display: flex;
 }
 
-.players-area div {
-    width: 500px;
+
+.left-side {
+    width: 400px;
+    height: 280px;
 }
 
-/* .sprite {
-    width: 300px;   
-    height: 300px;  
+.right-side {
+    width: 400px;
+    height: 280px;
+}
+
+.sprite-container {
+    height: 190px;
+}
+
+/* STATUS */
+
+.name {
+    font-size: 24px;
+    color: #90B790;
+}
+
+.name.computer {
+    margin-top: 10px;
+}
+
+.status.computer {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.hp-bar {
+    width: 250px;
+    height: 25px;
+    border: 3px solid #90B790;
+    border-radius: 5px;
+}
+
+.hp-fill {
+    width: 250px;
+    height: 25px;    
+    background-color: #BDE4CF;
+}
+
+/* SPRITE */
+
+.sprite {
+    width: 400px;   
     image-rendering: pixelated; 
-} */
+}
+
+.sprite-container.player {
+    position: relative;
+    right: -20px;
+    top: -10px;
+}
+
+.sprite-container.computer {
+    position: relative;
+    left: -20px;
+    bottom: -10px;
+}
+
+.sprite.player {
+    transform: scaleX(-1);
+    position: relative;
+    top: -170px;
+    left: -40px;
+    z-index: 2;
+}
+
+.sprite.computer {
+    position: relative;
+    top: -260px;
+    right: -10px;
+    z-index: 2;
+}
+
+/* PLATFORM */
+
+.platform {
+    transform: scale(0.95);
+    width: 330px;
+}
+
+.platform.player {
+    position: relative;
+    top: -280px;
+    z-index: 1;
+}
+
+.platform.computer {
+    position: relative;
+    top: -370px;
+    right: -50px;
+    z-index: 1;
+}
+
+/* DIALOGUE AREA */
 
 .boxes {
     display: flex;
     height: 100px;
     gap: 16px;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .dialogue-box {
     display: flex;
     align-items: center;
     width: 600px;
-    border: 4px solid #D497A9;
+    border: 3px solid #000000;
     padding: 12px;
     font-size: 20px;
     font-family: 'Tiny5', sans-serif;
     color: #1f1f1f;
     background-color: #F8F8F8;
 }
+
+/* CHOICES AREA */
 
 .choice-box {
     width: 200px;
