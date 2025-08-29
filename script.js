@@ -25,25 +25,72 @@ startBtn.addEventListener('click', () => {
 })
 
 /* ===============================
-   2. Game Screen
+   3. Game Screen
 ================================= */
 
 let dialogueBox = document.querySelector(".dialogue-box");
+const choices = document.querySelector(".choice-box")
+
 // TODO: ANIMATION TYPING TEXT
 dialogueBox.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
 
 /* ===============================
-   3. Game State & Elements
+   3A. Game Elements & Dialogue
 ================================= */
 
 let humanScore = 0;
 let computerScore = 0;
 
-const choices = document.querySelector(".choice-box");
+const prompt = [
+    `What will you throw next? Rock, Paper, or Scissors?`,
+    `The battle rages on… Choose your next move!`,
+    `Prepare your next throw!`,
+    `I'ts your turn again — Rock, Paper, or Scissors?`,
+    `The fight continues! What's your next choice?`,
+];
+
+const winRound = [
+    `It's super effective! Opponent takes 20 damage.`,
+    `A clean hit! Opponent takes 20 damage.`,
+    `Critical strike! Opponent takes 20 damage.`,
+];
+
+const loseRound = [
+    `It's super effective! You take 20 damage.`,
+    `Ouch! You take 20 damage.`,
+    `A crushing blow! You take 20 damage.`,
+];
+
+const winMatch = [
+    `You win the battle! Your rival is defeated.`,
+    `Victory! Rock, Paper, Scissors master!`,
+    `You prevailed this time — well played!`,
+];
+
+const loseMatch = [
+    `Defeat… Your rival bested you in Rock, Paper, Scissors.`,
+    `You lose the match. Better luck next time!`,
+    `The battle is over. Your rival stands victorious.`,
+];
 
 /* ===============================
-   4. Game Logic Functions
+   3B. Game Logic Functions
 ================================= */
+
+function getRandomDialogue(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function getDrawDialogue(choice) {
+    switch(choice) {
+        case 'Rock':
+            return `The clash ends in a stalemate!`
+        case 'Paper':
+            return `The sheets flutter to the ground… It's a tie!`
+        case 'Scissors':
+            return `The blades spark, but no one wins!`
+    }
+}
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
@@ -68,16 +115,16 @@ function playRound(humanChoice, computerChoice){
     console.log(`Player: ${humanChoice}`)
     console.log(`Computer: ${computerChoice}`)
     
-    dialogueBox.textContent = ""; // TEMP
+    dialogueBox.textContent = "";
     if (humanChoice === computerChoice) {
-        dialogueBox.textContent = `It's a tie! Both chose ${humanChoice}. No score.`;
+        dialogueBox.textContent = `You both chose ${humanChoice}. ` + getDrawDialogue(humanChoice);
         return;
     } else if (winsAgainst[humanChoice] === computerChoice) {
         humanScore++;
-        dialogueBox.textContent = `You win this round! ${humanChoice} beats ${computerChoice}`;
+        dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(winRound);
     } else {
         computerScore++;
-        dialogueBox.textContent = `You lose this round! ${computerChoice} beats ${humanChoice}`;
+        dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(loseRound);
     }
 }
 
