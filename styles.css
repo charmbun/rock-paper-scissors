@@ -52,7 +52,7 @@ body {
 }
 
 .frame-inside {
-    background-color: #fefefe; /* base background */
+    background-color: #f3f3f3; 
     background-image: 
         linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
@@ -121,21 +121,6 @@ body {
     display: flex;
 }
 
-
-.left-side {
-    width: 400px;
-    height: 280px;
-}
-
-.right-side {
-    width: 400px;
-    height: 280px;
-}
-
-.sprite-container {
-    height: 190px;
-}
-
 /* STATUS */
 
 .name {
@@ -143,82 +128,61 @@ body {
     color: #90B790;
 }
 
-.name.computer {
-    margin-top: 10px;
-}
-
 .status.computer {
     display: flex;
     flex-direction: column;
     align-items: end;
+    margin-bottom: 60px;
 }
 
 .hp-bar {
     width: 250px;
-    height: 25px;
+    height: 20px;
     border: 3px solid #90B790;
     border-radius: 5px;
 }
 
 .hp-fill {
     width: 250px;
-    height: 25px;    
+    height: 20px;    
     background-color: #BDE4CF;
 }
 
 /* SPRITE */
 
 .sprite {
-    width: 400px;   
+    width: 150px;   
     image-rendering: pixelated; 
 }
 
-.sprite-container.player {
-    position: relative;
-    right: -20px;
-    top: -10px;
-}
-
 .sprite-container.computer {
+    height: 200px;
     position: relative;
-    left: -20px;
-    bottom: -10px;
+    top: -30px;
 }
 
 .sprite.player {
-    transform: scaleX(-1);
     position: relative;
-    top: -170px;
-    left: -40px;
+    right: -100px;
     z-index: 2;
 }
 
 .sprite.computer {
     position: relative;
-    top: -260px;
-    right: -10px;
+    right: -120px;
+    bottom: -15px;
     z-index: 2;
 }
 
 /* PLATFORM */
 
 .platform {
-    transform: scale(0.95);
-    width: 330px;
-}
-
-.platform.player {
+    transform: scale(0.9);
     position: relative;
-    top: -280px;
+    top: -100px;
     z-index: 1;
-}
-
-.platform.computer {
-    position: relative;
-    top: -370px;
-    right: -50px;
-    z-index: 1;
-}
+    image-rendering: pixelated;
+} 
 
 /* DIALOGUE AREA */
 
