@@ -10,6 +10,7 @@ body {
     --pink: #D497A9;
     --lightgreen: #BAE0BB;
     --green: #90B78F;
+    --darkgreen: #698a69 ;
     --purple: #8BA1D9;
     --black: #000;
     --lightgrey: #f3f3f3;
@@ -137,8 +138,8 @@ body {
 
 .name {
     font-size: 24px;
-    color: var(--green);
-    margin-bottom: 5px;
+    color: var(--darkgreen);
+    margin-bottom: 2px;
 }
 
 .status.computer {
@@ -158,6 +159,7 @@ body {
     height: 20px;
     border: 3px solid var(--green);
     border-radius: 5px;
+    box-shadow: 3px 3px 0 var(--darkgreen);
 }
 
 .hp-fill {
@@ -200,6 +202,7 @@ body {
     top: -100px;
     z-index: 1;
     image-rendering: pixelated;
+    filter: drop-shadow(4px 4px 0px var(--darkgreen));
 } 
 
 /* DIALOGUE AREA */
@@ -222,7 +225,7 @@ body {
     font-size: 20px;
     color: #1f1f1f;
     background-color: var(--lightgrey);
-    box-shadow: 2px 2px 0 var(--black);
+    box-shadow: 2px 2px 0 var(--shadow);
 }
 
 /* CHOICES AREA */
