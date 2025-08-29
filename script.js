@@ -25,21 +25,16 @@ startBtn.addEventListener('click', () => {
 })
 
 /* ===============================
-   3. Game Screen
-================================= */
-
-let dialogueBox = document.querySelector(".dialogue-box");
-const choices = document.querySelector(".choice-box")
-
-// TODO: ANIMATION TYPING TEXT
-dialogueBox.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
-
-/* ===============================
    3A. Game Elements & Dialogue
 ================================= */
 
 let humanScore = 0;
 let computerScore = 0;
+const roundsCount = 5;
+let gameOver = false;
+
+let dialogueBox = document.querySelector(".dialogue-box");
+const choices = document.querySelector(".choice-box")
 
 const prompt = [
     `What will you throw next? Rock, Paper, or Scissors?`,
@@ -72,6 +67,9 @@ const loseMatch = [
     `You lose the match. Better luck next time!`,
     `The battle is over. Your rival stands victorious.`,
 ];
+
+// TODO: ANIMATION TYPING TEXT
+dialogueBox.textContent = `A wild opponent appears. Prepare for battle, best of ${roundsCount}! Rock, Paper, or Scissors?`;
 
 /* ===============================
    3B. Game Logic Functions
@@ -111,9 +109,6 @@ function playRound(humanChoice, computerChoice){
         Paper: 'Rock',
         Scissors: 'Paper'
     };
-
-    console.log(`Player: ${humanChoice}`)
-    console.log(`Computer: ${computerChoice}`)
     
     dialogueBox.textContent = "";
     if (humanChoice === computerChoice) {
@@ -128,12 +123,19 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+function checkWinner(humanScore, computerScore) {
+    dialogueBox.textContent = ""
+    dialogueBox.textContent = humanScore > computerScore ? getRandomDialogue(winMatch) : getRandomDialogue(loseMatch);
+}
+
 /* ===============================
    5. Event Listeners
 ================================= */
 
 choices.addEventListener('click', (event) => {
+    if (gameOver) return; // temp until gameover screen
     if (!event.target.matches('button')) return;
+    
     let button = event.target;
     let humanChoice;
 
@@ -151,16 +153,11 @@ choices.addEventListener('click', (event) => {
 
     const computerChoice = getComputerChoice();    
     playRound(humanChoice, computerChoice);
-    
-    console.log(`Player Score: ${humanScore}`)
-    console.log(`Computer Score: ${computerScore}`)
-    // Display the running score
-    // humanScoreCount.textContent = `Player Score: ${humanScore}`;
-    // computerScoreCount.textContent = `Computer Score: ${computerScore}`;
 
-    // Announce winner of the game
-    // if (humanScore === 5 || computerScore === 5) {
-    //     gameResults.textContent = humanScore > computerScore ? 'You won the game!' : 'You lose! Better luck next time.';
-    // }
+    if (humanScore === roundsCount || computerScore === roundsCount) {
+        gameOver = true;
+        checkWinner(humanScore, computerScore);
+        // TODO: redirect to a game over screen
+    }
 });
 
