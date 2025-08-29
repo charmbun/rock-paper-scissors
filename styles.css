@@ -176,9 +176,17 @@ body {
 }
 
 .hp-fill {
-    width: 250px;
     height: 20px;    
     background-color: var(--lightgreen);
+    transition: width 0.3s steps(5); 
+}
+
+#playerHP {
+    width: 100%;
+}
+
+#computerHP {
+    width: 100%;
 }
 
 /* ===============================

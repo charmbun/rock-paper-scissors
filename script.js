@@ -30,11 +30,16 @@ startBtn.addEventListener('click', () => {
 
 let humanScore = 0;
 let computerScore = 0;
+let playerHP = 100;
+let computerHP = 100;
+
 const roundsCount = 5;
 let gameOver = false;
 
 let dialogueBox = document.querySelector(".dialogue-box");
-const choices = document.querySelector(".choice-box")
+const choices = document.querySelector(".choice-box");
+const playerHPBar = document.querySelector("#playerHP");
+const computerHPBar = document.querySelector("#computerHP");
 
 const prompt = [
     `What will you throw next? Rock, Paper, or Scissors?`,
@@ -102,6 +107,18 @@ function getComputerChoice() {
     }
 }
 
+function inflictDamage(loser){
+
+    if (loser === 'computer') {
+        computerHP = Math.max(0, computerHP - 20); 
+        computerHPBar.style.width = `${computerHP}%`
+    }
+    else {
+        playerHP = Math.max(0, playerHP - 20); 
+        playerHPBar.style.width = `${playerHP}%`
+    }
+}
+
 function playRound(humanChoice, computerChoice){
 
     const winsAgainst = {
@@ -116,9 +133,11 @@ function playRound(humanChoice, computerChoice){
         return;
     } else if (winsAgainst[humanChoice] === computerChoice) {
         humanScore++;
+        inflictDamage('computer');
         dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(winRound);
     } else {
-        computerScore++;
+        computerScore++; 
+        inflictDamage('player');
         dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(loseRound);
     }
 }
