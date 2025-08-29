@@ -117,13 +117,12 @@ body {
     margin: 32px 0;
 }
 
-
-.btn.start {
+#startBtn {
     font-size: 32px;
     background: var(--lightgrey);
 }
 
-.btn.start:active {
+#startBtn:active {
     background-color: var(--darkgrey);
 }
 
@@ -256,7 +255,7 @@ body {
     gap: 2px;
 }
 
-.btn.rock { background: var(--pink); }
-.btn.paper { background: var(--green); }
-.btn.scissors { background: var(--purple); }
+#rockBtn { background: var(--pink); }
+#paperBtn { background: var(--green); }
+#scissorsBtn { background: var(--purple); }
 
