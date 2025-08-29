@@ -1,6 +1,8 @@
 'use strict';
 
-/****** SCREEN CHANGE LOGIC *****/
+/* ===============================
+   1. Screen Change Logic
+================================= */
 
 const startScreen = document.querySelector("#start-screen");
 const gameScreen = document.querySelector("#game-screen");
@@ -12,7 +14,10 @@ function changeScreen(prevScreen, newScreen) {
     newScreen.style.display = "flex";
 }
 
-/***** START SCREEN *****/
+
+/* ===============================
+   2. Start Screen
+================================= */
 
 const startBtn = document.querySelector(".btn.start");
 
@@ -23,7 +28,9 @@ startBtn.addEventListener('click', () => {
 let dialogueBox = document.querySelector(".dialogue-box");
 dialogueBox.textContent = `A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`;
 
-/***** GAME LOGIC *****/
+/* ===============================
+   3. Game State & Elements
+================================= */
 
 let humanScore = 0;
 let computerScore = 0;
@@ -40,6 +47,10 @@ results.appendChild(roundResults);
 results.appendChild(humanScoreCount);
 results.appendChild(computerScoreCount);
 results.appendChild(gameResults);
+
+/* ===============================
+   4. Game Logic Functions
+================================= */
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
@@ -75,6 +86,10 @@ function playRound(humanChoice, computerChoice){
         roundResults.textContent = `You lose this round! ${computerChoice} beats ${humanChoice}`;
     }
 }
+
+/* ===============================
+   5. Event Listeners
+================================= */
 
 choices.addEventListener('click', (event) => {
     if (!event.target.matches('button')) return;

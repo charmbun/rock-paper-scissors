@@ -1,4 +1,6 @@
-/***** GLOBAL *****/
+/* ===============================
+   1. Global
+================================= */
 
 body {
     font-family: 'Tiny5', sans-serif;
@@ -18,7 +20,9 @@ body {
     --shadow: rgb(85, 85, 85);
 }
 
-/***** UTILITIES *****/
+/* ===============================
+   2. Utilities
+================================= */
 
 .text-outline {
     color: #fff;
@@ -43,7 +47,9 @@ body {
     transform: translate(2px, 2px);
 }
 
-/***** BACKGROUND *****/
+/* ===============================
+   3. Frame & Graphics
+================================= */
 
 #container {
     display: flex;
@@ -87,7 +93,9 @@ body {
     box-shadow: 5px 5px var(--shadow); 
 }
 
-/***** START SCREEN *****/
+/* ===============================
+   4. Start Screen
+================================= */
 
 #rock { color: var(--pink); }
 #paper { color: var(--green); }
@@ -119,14 +127,18 @@ body {
     background-color: var(--darkgrey);
 }
 
-/***** GAME SCREEN *****/
+/* ===============================
+   5. Game Screen
+================================= */
 
 #game-screen {
     display: flex;
     flex-direction: column;
 }
 
-/* BATTLE AREA */
+/* ===============================
+   5A. Battle Area
+================================= */
 
 .battle-area {
     width: 800px;
@@ -134,7 +146,9 @@ body {
     display: flex;
 }
 
-/* STATUS */
+/* ===============================
+   5A-1. Status (Name & HP Bar)
+================================= */
 
 .name {
     font-size: 24px;
@@ -168,33 +182,14 @@ body {
     background-color: var(--lightgreen);
 }
 
-/* SPRITE */
+/* ===============================
+   5A-2. Sprite & Platform
+================================= */
 
 .sprite {
     width: 150px;   
     image-rendering: pixelated; 
 }
-
-.sprite-container.computer {
-    height: 200px;
-    position: relative;
-    top: -30px;
-}
-
-.sprite.player {
-    position: relative;
-    right: -100px;
-    z-index: 2;
-}
-
-.sprite.computer {
-    position: relative;
-    right: -120px;
-    bottom: -15px;
-    z-index: 2;
-}
-
-/* PLATFORM */
 
 .platform {
     transform: scale(0.9);
@@ -205,7 +200,28 @@ body {
     filter: drop-shadow(4px 4px 0px var(--darkgreen));
 } 
 
-/* DIALOGUE AREA */
+.sprite.player {
+    position: relative;
+    right: -100px;
+    z-index: 2;
+}
+
+.sprite-container.computer {
+    height: 200px;
+    position: relative;
+    top: -30px;
+}
+
+.sprite.computer {
+    position: relative;
+    right: -120px;
+    bottom: -15px;
+    z-index: 2;
+}
+
+/* ===============================
+   5B. Dialogue Area
+================================= */
 
 .boxes {
     display: flex;
@@ -228,7 +244,9 @@ body {
     box-shadow: 2px 2px 0 var(--shadow);
 }
 
-/* CHOICES AREA */
+/* ===============================
+   5C. Choices Area
+================================= */
 
 .choice-box {
     width: 200px;
