@@ -14,7 +14,7 @@ function changeScreen(prevScreen, newScreen) {
 
 /***** START SCREEN *****/
 
-const startBtn = document.querySelector("#startBtn");
+const startBtn = document.querySelector(".btn.start");
 
 startBtn.addEventListener('click', () => {
     changeScreen(startScreen, gameScreen);

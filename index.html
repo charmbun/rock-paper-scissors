@@ -20,13 +20,13 @@
                 <!-- Start Screen -->
                 <div id="start-screen">
                     <h1 class="text-outline"><span id="rock">ROCK</span> <span id="paper">PAPER</span> <span id="scissors">SCISSORS</span></h1>
-                    <button id="startBtn">NEW GAME</button>
+                    <button class="btn start">NEW GAME</button>
                 </div>
                 <!-- Game Screen -->
                 <div id="game-screen" style="display:none;">
                     <!-- Battle Area -->
                     <div class="battle-area">
-                        <div class="left-side">
+                        <div>
                             <div class="status computer">
                                 <span class="name">Computer</span>
                                 <div class="hp-bar computer">
@@ -35,14 +35,12 @@
                             </div>
                             <div class="sprite-container player">
                                 <a href="https://pokemondb.net/pokedex/charmander"><img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/charmander.gif" alt="Charmander" class="sprite player"></a>
-                                <!-- <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/charmander.png" class="sprite player"> -->
                                 <img src="./images/UI/platform4.png" class="platform player">
                             </div>
                         </div>
-                        <div class="right-side">
+                        <div>
                             <div class="sprite-container computer">
                                 <a href="https://pokemondb.net/pokedex/bulbasaur"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" class="sprite computer"></a>
-                                <!-- <img src="https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png" class="sprite computer"> -->
                                 <img src="./images/UI/platform4.png" class="platform computer">
                             </div>
                             <div class="status player">
@@ -58,9 +56,9 @@
                         <div class="dialogue-box"></div>
                         <!-- Choices Area -->
                         <div class="choice-box">
-                            <button id="rockBtn" type="button">Rock</button>
-                            <button id="paperBtn" type="button">Paper</button>
-                            <button id="scissorsBtn" type="button">Scissors</button>
+                            <button class="btn rock" type="button">Rock</button>
+                            <button class="btn paper" type="button">Paper</button>
+                            <button class="btn scissors" type="button">Scissors</button>
                         </div>
                     </div>
                 </div>

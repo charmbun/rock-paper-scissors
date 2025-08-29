@@ -5,16 +5,16 @@ body {
     background-color: #FFFAFC;
 }
 
-#rock {
-    color: #D497A9;
-}
-
-#paper {
-    color: #90B790;
-}
-
-#scissors {
-    color: #8BA1D9;
+:root {
+    --lightpink: #E2C1D4;
+    --pink: #D497A9;
+    --lightgreen: #BAE0BB;
+    --green: #90B78F;
+    --purple: #8BA1D9;
+    --black: #000;
+    --lightgrey: #f3f3f3;
+    --darkgrey: #d9d9d9;
+    --shadow: rgb(85, 85, 85);
 }
 
 /***** UTILITIES *****/
@@ -22,10 +22,24 @@ body {
 .text-outline {
     color: #fff;
     text-shadow:
-        -2px -2px 0 #000,  
-        2px -2px 0 #000,
-        -2px  2px 0 #000,
-        2px  2px 0 #000;
+        -2px -2px 0 var(--black),  
+        2px -2px 0 var(--black),
+        -2px  2px 0 var(--black),
+        2px  2px 0 var(--black);
+}
+
+.btn {
+    font-family: 'Tiny5', sans-serif;
+    font-size: 16px;
+    border: 2px solid var(--black);
+    padding: 6px 12px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
 }
 
 /***** BACKGROUND *****/
@@ -52,27 +66,31 @@ body {
 }
 
 .frame-inside {
-    background-color: #f3f3f3; 
+    background-color: var(--lightgrey); 
     background-image: 
-        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, #0000000d 1px, transparent 1px),
+        linear-gradient(to bottom, #0000000d 1px, transparent 1px);
     background-size: 10px 10px; 
-    border: 3px solid #D497A9;
-    outline: 2px solid #D497A9;
+    border: 3px solid var(--pink);
+    outline: 2px solid var(--pink);
     width: 800px;
     height: 400px;
     padding: 20px 40px;
 }
 
 .frame-outside {
-    background-color: #E2C1D4;
-    border: 3px solid #000;
-    outline: 2px solid #666;
+    background-color: var(--lightpink);
+    border: 3px solid var(--black);
+    outline: 2px solid var(--shadow);
     padding: 10px;
-    box-shadow: 5px 5px 0 #555; 
+    box-shadow: 5px 5px var(--shadow); 
 }
 
 /***** START SCREEN *****/
+
+#rock { color: var(--pink); }
+#paper { color: var(--green); }
+#scissors { color: var(--purple); }
 
 #start-screen {
     display: flex;
@@ -90,20 +108,14 @@ body {
     margin: 32px 0;
 }
 
-#startBtn {
-    font-family: 'Tiny5', sans-serif;
+
+.btn.start {
     font-size: 32px;
-    background: #eeeeee;
-    border: 2px solid #000;
-    padding: 6px 12px;
-    cursor: pointer;
-    box-shadow: 2px 2px 0 #555; /
+    background: var(--lightgrey);
 }
 
-#startBtn:active {
-    background-color: #d9d9d9;
-    box-shadow: none;
-    transform: translate(2px, 2px); /* pressed look */
+.btn.start:active {
+    background-color: var(--darkgrey);
 }
 
 /***** GAME SCREEN *****/
@@ -125,7 +137,7 @@ body {
 
 .name {
     font-size: 24px;
-    color: #90B790;
+    color: var(--green);
     margin-bottom: 5px;
 }
 
@@ -144,14 +156,14 @@ body {
 .hp-bar {
     width: 250px;
     height: 20px;
-    border: 3px solid #90B78F;
+    border: 3px solid var(--green);
     border-radius: 5px;
 }
 
 .hp-fill {
     width: 250px;
     height: 20px;    
-    background-color: #BAE0BB;
+    background-color: var(--lightgreen);
 }
 
 /* SPRITE */
@@ -205,40 +217,25 @@ body {
     display: flex;
     align-items: center;
     width: 600px;
-    border: 3px solid #000000;
+    border: 3px solid var(--black);
     padding: 12px;
     font-size: 20px;
-    font-family: 'Tiny5', sans-serif;
     color: #1f1f1f;
-    background-color: #F3F3F3;
+    background-color: var(--lightgrey);
+    box-shadow: 2px 2px 0 var(--black);
 }
 
 /* CHOICES AREA */
 
 .choice-box {
     width: 200px;
-    border: 2px solid #000000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2px;
 }
 
-.choice-box button {
-    font-family: 'Tiny5', sans-serif;
-    font-size: 16px;
-    border: 2px solid #000;
-    padding: 6px 12px;
-    cursor: pointer;
-    box-shadow: 2px 2px 0 #555; 
-}
+.btn.rock { background: var(--pink); }
+.btn.paper { background: var(--green); }
+.btn.scissors { background: var(--purple); }
 
-#rockBtn {
-    background: #D497A9;
-}
-#paperBtn {
-    background: #90B790;
-}
-#scissorsBtn {
-    background: #8BA1D9;
-}
