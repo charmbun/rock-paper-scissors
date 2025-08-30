@@ -94,7 +94,7 @@ const loseMatch = [
 function typeText(text, speed = 30) {
 
     dialogueBox.textContent = "";
-    dialogueBox.dataset.fullText = text; // stores the full text
+    dialogueBox.dataset.fullText = text; 
     let i = 0;
     isTyping = true;
 
@@ -223,7 +223,9 @@ choices.addEventListener('click', (event) => {
     playRound(humanChoice, computerChoice);
     
     if (humanScore === roundsCount || computerScore === roundsCount) {
-        checkWinner(humanScore, computerScore);
+        setTimeout(() => {
+            checkWinner(humanScore, computerScore);
+        }, 3000); 
     }
 });
 

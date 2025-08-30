@@ -116,13 +116,6 @@ h1 {
 #rock { color: var(--pink); }
 #paper { color: var(--green); }
 #scissors { color: var(--purple); }
-/* 
-#start-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} */
 
 #startBtn {
     font-size: 32px;
@@ -134,16 +127,7 @@ h1 {
 }
 
 /* ===============================
-   5. Game Screen
-================================= */
-
-/* #game-screen {
-    display: flex;
-    flex-direction: column;
-} */
-
-/* ===============================
-   5A. Battle Area
+   5A. Game Screen: Battle Area
 ================================= */
 
 .battle-area {
@@ -234,7 +218,7 @@ h1 {
 }
 
 /* ===============================
-   5B. Dialogue Area
+   5B. Game Screen: Dialogue Area
 ================================= */
 
 .boxes {
@@ -259,7 +243,7 @@ h1 {
 }
 
 /* ===============================
-   5C. Choices Area
+   5C. Game Screen: Choices Area
 ================================= */
 
 .choice-box {
