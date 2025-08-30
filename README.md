@@ -17,7 +17,7 @@ Originally developed as part of [The Odin Project Foundations](https://www.theod
 ![Screenshot of Game Screen](./images/preview/preview2.png)
 
 ## Live Demo
-Play the game [here](charmbun.github.io/rock-paper-scissors).
+Play the game [here](https://charmbun.github.io/rock-paper-scissors/).
 
 ## License
 This project is for educational purposes only.
