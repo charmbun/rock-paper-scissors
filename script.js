@@ -195,11 +195,11 @@ function startNewGame () {
 ================================= */
 
 choices.addEventListener('click', (event) => {
+    if (gameOver) return;
     if (!event.target.matches('button')) return;
-    // If currently typing → finish instantly before new line
     if (isTyping) {
-        clearTimeout(typingTimeout); // stop the current loop
-        dialogueBox.textContent = dialogueBox.dataset.fullText; // reveal full line
+        clearTimeout(typingTimeout); 
+        dialogueBox.textContent = dialogueBox.dataset.fullText; 
         isTyping = false;
         return;
     } 
@@ -223,6 +223,7 @@ choices.addEventListener('click', (event) => {
     playRound(humanChoice, computerChoice);
     
     if (humanScore === roundsCount || computerScore === roundsCount) {
+        gameOver = true;
         setTimeout(() => {
             checkWinner(humanScore, computerScore);
         }, 3000); 
