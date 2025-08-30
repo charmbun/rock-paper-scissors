@@ -22,7 +22,7 @@ const startBtn = document.querySelector("#startBtn");
 
 startBtn.addEventListener('click', () => {
     changeScreen(startScreen, gameScreen);
-    typeText(`A wild opponent appears. Prepare for battle, first to ${roundsCount}! Rock, Paper, or Scissors?`);
+    typeText(`A wild opponent appears. Prepare for battle! Rock, Paper, or Scissors?`);
 })
 
 /* ===============================
@@ -37,6 +37,7 @@ let humanScore = 0;
 let computerScore = 0;
 let playerHP = 100;
 let computerHP = 100;
+let typingTimeout; 
 
 // FLAGS
 let gameOver = false;
@@ -83,6 +84,27 @@ const loseMatch = [
    3B. Game Logic Functions
 ================================= */
 
+
+function typeText(text, speed = 30) {
+
+    dialogueBox.textContent = "";
+    dialogueBox.dataset.fullText = text; // stores the full text
+    let i = 0;
+    isTyping = true;
+
+    const typeChar = () => {
+        if (i < text.length) {
+            dialogueBox.textContent += text.charAt(i);
+            i++;
+            typingTimeout = setTimeout(typeChar, speed);
+        } else {
+            isTyping = false;
+        }
+    };
+
+    typeChar();
+}
+
 function getRandomDialogue(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -96,26 +118,6 @@ function getDrawDialogue(choice) {
         case 'Scissors':
             return `The blades spark, but no one wins!`
     }
-}
-
-function typeText(text, speed = 30) {
-    if (isTyping) return;
-    isTyping = true;
-
-    dialogueBox.textContent = "";
-    let i = 0;
-
-    const typeChar = () => {
-        if (i < text.length) {
-            dialogueBox.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeChar, speed);
-        } else {
-            isTyping = false;
-        }
-    };
-
-    typeChar();
 }
 
 function getComputerChoice() {
@@ -150,28 +152,27 @@ function playRound(humanChoice, computerChoice){
         Scissors: 'Paper'
     };
     
-    // dialogueBox.textContent = "";
     if (humanChoice === computerChoice) {
         typeText(`You both chose ${humanChoice}. ` + getDrawDialogue(humanChoice))
-        // dialogueBox.textContent = `You both chose ${humanChoice}. ` + getDrawDialogue(humanChoice);
         return;
     } else if (winsAgainst[humanChoice] === computerChoice) {
         humanScore++;
+        typeText(`You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(winRound));
         inflictDamage('computer');
-        typeText(`You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(winRound))
-        // dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(winRound);
     } else {
         computerScore++; 
+        typeText(`You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(loseRound));
         inflictDamage('player');
-        typeText(`You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(loseRound))
-        // dialogueBox.textContent = `You chose ${humanChoice}. Opponent chose ${computerChoice}. ` + getRandomDialogue(loseRound);
     }
 }
 
 function checkWinner(humanScore, computerScore) {
-    // dialogueBox.textContent = ""
-    const gameOver = humanScore > computerScore ? getRandomDialogue(winMatch) : getRandomDialogue(loseMatch);
-    typeText(gameOver);
+    const resultText = humanScore > computerScore 
+        ? getRandomDialogue(winMatch) 
+        : getRandomDialogue(loseMatch);
+
+    console.log(resultText);        // TEMP
+    // typeText(resultText);
 }
 
 /* ===============================
@@ -181,7 +182,19 @@ function checkWinner(humanScore, computerScore) {
 choices.addEventListener('click', (event) => {
     if (gameOver) return; // temp until gameover screen
     if (!event.target.matches('button')) return;
+    // If currently typing → finish instantly before new line
+
+    if (isTyping) {
+        clearTimeout(typingTimeout); // stop the current loop
+        dialogueBox.textContent = dialogueBox.dataset.fullText; // reveal full line
+        isTyping = false;
+        return;
+    } 
     
+    if (humanScore === roundsCount || computerScore === roundsCount) {
+        // ADD GAMEOVER SCREEN
+    }
+
     let button = event.target;
     let humanChoice;
 
@@ -199,11 +212,5 @@ choices.addEventListener('click', (event) => {
 
     const computerChoice = getComputerChoice();    
     playRound(humanChoice, computerChoice);
-
-    if (humanScore === roundsCount || computerScore === roundsCount) {
-        gameOver = true;
-        checkWinner(humanScore, computerScore);
-        // TODO: redirect to a game over screen
-    }
 });
 
