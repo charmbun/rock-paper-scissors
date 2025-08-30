@@ -16,54 +16,62 @@
         <img src="./images/UI/graphics-left-2.png" class="left-graphics">
         <div class="frame">
             <div class="frame-outside">
-            <div class="frame-inside ">
-                <!-- Start Screen -->
-                <div id="start-screen">
-                    <h1 class="text-outline"><span id="rock">ROCK</span> <span id="paper">PAPER</span> <span id="scissors">SCISSORS</span></h1>
-                    <button id="startBtn" class="btn">NEW GAME</button>
-                </div>
-                <!-- Game Screen -->
-                <div id="game-screen" style="display:none;">
-                    <!-- Battle Area -->
-                    <div class="battle-area">
-                        <div>
-                            <div class="status computer">
-                                <span class="name">Computer</span>
-                                <div class="hp-bar computer">
-                                    <div id="computerHP" class="hp-fill"></div>
+                <div class="frame-inside ">
+                    <!-- Start Screen -->
+                    <div id="start-screen" class="flex-screen">
+                        <h1 class="text-outline"><span id="rock">ROCK</span> <span id="paper">PAPER</span> <span id="scissors">SCISSORS</span></h1>
+                        <button id="startBtn" class="btn">NEW GAME</button>
+                    </div>
+                    <!-- Game Screen -->
+                    <div id="game-screen" class="flex-screen" style="display:none;">
+                        <!-- Battle Area -->
+                        <div class="battle-area">
+                            <div>
+                                <div class="status computer">
+                                    <span class="name">Computer</span>
+                                    <div class="hp-bar computer">
+                                        <div id="computerHP" class="hp-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="sprite-container player">
+                                    <a href="https://pokemondb.net/pokedex/charmander"><img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/charmander.gif" alt="Charmander" class="sprite player"></a>
+                                    <img src="./images/UI/platform4.png" class="platform player">
                                 </div>
                             </div>
-                            <div class="sprite-container player">
-                                <a href="https://pokemondb.net/pokedex/charmander"><img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/charmander.gif" alt="Charmander" class="sprite player"></a>
-                                <img src="./images/UI/platform4.png" class="platform player">
+                            <div>
+                                <div class="sprite-container computer">
+                                    <a href="https://pokemondb.net/pokedex/bulbasaur"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" class="sprite computer"></a>
+                                    <img src="./images/UI/platform4.png" class="platform computer">
+                                </div>
+                                <div class="status player">
+                                    <span class="name">Player</span>
+                                    <div class="hp-bar player">
+                                        <div id="playerHP" class="hp-fill"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="sprite-container computer">
-                                <a href="https://pokemondb.net/pokedex/bulbasaur"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" class="sprite computer"></a>
-                                <img src="./images/UI/platform4.png" class="platform computer">
-                            </div>
-                            <div class="status player">
-                                <span class="name">Player</span>
-                                <div class="hp-bar player">
-                                    <div id="playerHP" class="hp-fill"></div>
-                                </div>
+                        <div class="boxes">
+                            <!-- Dialogue Area -->
+                            <div class="dialogue-box"></div>
+                            <!-- Choices Area -->
+                            <div class="choice-box">
+                                <button id="rockBtn" class="btn" type="button">Rock</button>
+                                <button id="paperBtn" class="btn" type="button">Paper</button>
+                                <button id="scissorsBtn" class="btn" type="button">Scissors</button>
                             </div>
                         </div>
                     </div>
-                    <div class="boxes">
-                        <!-- Dialogue Area -->
-                        <div class="dialogue-box"></div>
-                        <!-- Choices Area -->
-                        <div class="choice-box">
-                            <button id="rockBtn" class="btn" type="button">Rock</button>
-                            <button id="paperBtn" class="btn" type="button">Paper</button>
-                            <button id="scissorsBtn" class="btn" type="button">Scissors</button>
-                        </div>
+                    <!-- GameOver Screen -->
+                    <div id="win-screen" class="flex-screen" style="display:none">
+                        <h1 class="gameover-text text-outline">YOU WIN!</h1>
+                        <button id="winBtn" class="btn">PLAY AGAIN?</button>
+                    </div>
+                    <div id="lose-screen" class="flex-screen" style="display:none">
+                        <h1 class="gameover-text text-outline">GAME OVER</h1>
+                        <button id="loseBtn" class="btn">TRY AGAIN?</button>
                     </div>
                 </div>
-
-            </div>
             </div>
         </div>
         <img src="./images/UI/graphics-right-2.png" class="right-graphics">

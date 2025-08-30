@@ -6,12 +6,19 @@
 
 const startScreen = document.querySelector("#start-screen");
 const gameScreen = document.querySelector("#game-screen");
-// const winScreen = document.querySelector("#win-screen");
-// const loseScreen = document.querySelector("#lose-screen");
+const winScreen = document.querySelector("#win-screen");
+const loseScreen = document.querySelector("#lose-screen");
+const frame = document.querySelector(".frame-inside");
 
 function changeScreen(prevScreen, newScreen) {
     prevScreen.style.display = "none";
     newScreen.style.display = "flex";
+
+    if (newScreen === winScreen) {
+        frame.style["background-color"] = "#90B78F"
+    } else if (newScreen === loseScreen) {
+        frame.style["background-color"] = "#B06F78"
+    }
 }
 
 /* ===============================
@@ -26,7 +33,7 @@ startBtn.addEventListener('click', () => {
 })
 
 /* ===============================
-   3A. Game Elements & Dialogue
+   3A. Game Screen: Game Elements & Dialogue
 ================================= */
 
 // CONSTANT
@@ -81,9 +88,8 @@ const loseMatch = [
 ];
 
 /* ===============================
-   3B. Game Logic Functions
+   3B. Game Screen: Game Logic Functions
 ================================= */
-
 
 function typeText(text, speed = 30) {
 
@@ -167,33 +173,36 @@ function playRound(humanChoice, computerChoice){
 }
 
 function checkWinner(humanScore, computerScore) {
-    const resultText = humanScore > computerScore 
-        ? getRandomDialogue(winMatch) 
-        : getRandomDialogue(loseMatch);
+    if (humanScore > computerScore) {
+        changeScreen(gameScreen, winScreen);
 
-    console.log(resultText);        // TEMP
-    // typeText(resultText);
+    } else {
+        changeScreen(gameScreen, loseScreen);
+    }
+}
+
+function startNewGame () {
+    humanScore = 0;
+    computerScore = 0;
+    playerHP = 100;
+    playerHPBar.style.width = "100%"
+    computerHP = 100;
+    computerHPBar.style.width = "100%"
 }
 
 /* ===============================
-   5. Event Listeners
+   5. Game Screen: Event Listeners
 ================================= */
 
 choices.addEventListener('click', (event) => {
-    if (gameOver) return; // temp until gameover screen
     if (!event.target.matches('button')) return;
     // If currently typing → finish instantly before new line
-
     if (isTyping) {
         clearTimeout(typingTimeout); // stop the current loop
         dialogueBox.textContent = dialogueBox.dataset.fullText; // reveal full line
         isTyping = false;
         return;
     } 
-    
-    if (humanScore === roundsCount || computerScore === roundsCount) {
-        // ADD GAMEOVER SCREEN
-    }
 
     let button = event.target;
     let humanChoice;
@@ -212,5 +221,31 @@ choices.addEventListener('click', (event) => {
 
     const computerChoice = getComputerChoice();    
     playRound(humanChoice, computerChoice);
+    
+    if (humanScore === roundsCount || computerScore === roundsCount) {
+        checkWinner(humanScore, computerScore);
+    }
 });
 
+/* ===============================
+   6. GameOver Screen
+================================= */
+
+const winBtn = document.querySelector("#winBtn");
+const loseBtn = document.querySelector("#loseBtn");
+
+winBtn.addEventListener('click', (event) => {
+    // clear the variables
+    startNewGame();
+    // change screen
+    changeScreen(winScreen, startScreen);
+    frame.style["background-color"] = "#f3f3f3"
+})
+
+loseBtn.addEventListener('click', (event) => {
+    // clear the variables
+    startNewGame();
+    // change screen
+    changeScreen(loseScreen, startScreen);
+    frame.style["background-color"] = "#f3f3f3"
+})

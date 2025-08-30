@@ -24,6 +24,13 @@ body {
    2. Utilities
 ================================= */
 
+.flex-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .text-outline {
     color: #fff;
     text-shadow:
@@ -45,6 +52,15 @@ body {
 .btn:active {
     box-shadow: none;
     transform: translate(2px, 2px);
+}
+
+h1 {
+    font-family: 'Micro 5', sans-serif;
+    font-size: 200px;
+    font-weight: 200;
+    text-align: center;
+    line-height: 0.6;
+    margin: 32px 0;
 }
 
 /* ===============================
@@ -100,22 +116,13 @@ body {
 #rock { color: var(--pink); }
 #paper { color: var(--green); }
 #scissors { color: var(--purple); }
-
+/* 
 #start-screen {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-#start-screen h1 {
-    font-family: 'Micro 5', sans-serif;
-    font-size: 200px;
-    font-weight: 200;
-    text-align: center;
-    line-height: 0.6;
-    margin: 32px 0;
-}
+} */
 
 #startBtn {
     font-size: 32px;
@@ -130,10 +137,10 @@ body {
    5. Game Screen
 ================================= */
 
-#game-screen {
+/* #game-screen {
     display: flex;
     flex-direction: column;
-}
+} */
 
 /* ===============================
    5A. Battle Area
@@ -266,4 +273,28 @@ body {
 #rockBtn { background: var(--pink); }
 #paperBtn { background: var(--green); }
 #scissorsBtn { background: var(--purple); }
+
+/* ===============================
+   6. GameOver Screen
+================================= */
+
+#win-screen { color: var(--lightgreen); }
+#lose-screen { color: var(--lightpink); }
+
+.gameover-text {
+    margin: 100px 0 32px 0;
+}
+
+#winBtn {
+    font-size: 24px;
+    background: var(--lightpink);
+}
+
+#loseBtn {
+    font-size: 24px;
+    background: var(--lightgreen);
+}
+
+#winBtn:active { background-color: var(--pink); }
+#loseBtn:active { background-color: var(--green); }
 
